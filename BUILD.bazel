@@ -1,0 +1,33 @@
+# SPDX-License-Identifier: GPL-2.0
+
+load("//vendor/amlogic/kernel:kernel_platform.bzl", "amlogic_kernel_platform")
+load("//vendor/amlogic/gpu-modules/bifrost:defs.bzl", "mali_bifrost_module")
+load("//vendor/amlogic/media-modules:defs.bzl", "media_modules_module")
+load("//vendor/amlogic/common_drivers:defs.bzl", "common_drivers_module")
+load(":modules.bzl", "COMMON_DRIVERS_MODULES", "OPPEN_MODULES")
+
+package(
+    default_visibility = ["//visibility:public"],
+)
+
+mali_bifrost_module(name = "gpu_bifrost", kernel_build = ":oppen", deps = [":common_drivers"])
+
+media_modules_module(name = "media", kernel_build = ":oppen", deps = [":common_drivers"])
+
+common_drivers_module(name = "common_drivers", kernel_build = ":oppen", outs = COMMON_DRIVERS_MODULES)
+
+amlogic_kernel_platform(
+    name = "oppen",
+    dtb_outs = [
+        "s4_s905y4_ap222_drm.dtb",
+        "android_overlay_dt.dtbo",
+    ],
+    module_outs = OPPEN_MODULES,
+    build_config = "//vendor/amlogic/kernel:build.config.oppen.bazel",
+    kmi_symbol_list = "//vendor/amlogic/kernel:android/abi_gki_aarch64_amlogic",
+    kernel_modules = [
+        ":gpu_bifrost",
+        ":media",
+        ":common_drivers",
+    ],
+)
