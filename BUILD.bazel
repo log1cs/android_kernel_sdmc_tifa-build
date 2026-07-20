@@ -3,7 +3,7 @@
 load("//vendor/amlogic/kernel:kernel_platform.bzl", "amlogic_kernel_platform")
 load("//vendor/amlogic/gpu-modules/bifrost:defs.bzl", "mali_bifrost_module")
 load("//vendor/amlogic/media-modules:defs.bzl", "media_modules_module")
-load(":modules.bzl", "COMMON_DRIVERS_MODULES", "OPPEN_MODULES")
+load(":modules.bzl", "COMMON_DRIVERS_MODULES", "GKI_MODULES_REMOVE", "OPPEN_MODULES", "MODULES_OUT_REMOVE")
 
 package(
     default_visibility = ["//visibility:public"],
@@ -19,7 +19,8 @@ amlogic_kernel_platform(
         "s4_s905y4_ap222_drm.dtb",
         "android_overlay_dt.dtbo",
     ],
-    module_outs = OPPEN_MODULES + COMMON_DRIVERS_MODULES,
+    module_outs = [m for m in OPPEN_MODULES + COMMON_DRIVERS_MODULES if m not in MODULES_OUT_REMOVE],
+    gki_modules_remove = GKI_MODULES_REMOVE,
     build_config = "//vendor/amlogic/kernel:build.config.oppen.bazel",
     kmi_symbol_list = "//vendor/amlogic/kernel:android/abi_gki_aarch64_amlogic",
     kernel_modules = [

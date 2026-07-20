@@ -72,3 +72,42 @@ COMMON_DRIVERS_MODULES = [
     "common_drivers/sound/soc/codecs/amlogic/amlogic-snd-codec-tas5805.ko",
     "common_drivers/sound/soc/codecs/amlogic/amlogic-snd-codec-tl1.ko",
 ]
+
+MODULES_OUT_REMOVE = [
+    "fs/ntfs3/ntfs3.ko",
+    "common_drivers/drivers/drm/aml_drm.ko",
+    "common_drivers/drivers/media/camera/amlogic-camera.ko",
+    "common_drivers/drivers/clk/meson/amlogic-clk-soc-s6.ko",
+    "common_drivers/drivers/clk/meson/amlogic-clk-soc-s7.ko",
+    "common_drivers/drivers/clk/meson/amlogic-clk-soc-s7d.ko",
+    "common_drivers/drivers/gpio/amlogic-pinctrl-soc-s6.ko",
+    "common_drivers/drivers/gpio/amlogic-pinctrl-soc-s7.ko",
+    "common_drivers/drivers/gpio/amlogic-pinctrl-soc-s7d.ko",
+]
+
+GKI_MODULES_REMOVE = [
+    "drivers/net/can/dev/can-dev.ko",
+    "drivers/net/can/slcan.ko",
+    "drivers/net/can/vcan.ko",
+    "drivers/net/usb/aqc111.ko",
+    "drivers/net/usb/cdc_eem.ko",
+    "drivers/net/usb/rtl8150.ko",
+    "drivers/usb/serial/ftdi_sio.ko",
+    "drivers/usb/serial/usbserial.ko",
+    "net/6lowpan/6lowpan.ko",
+    "net/6lowpan/nhc_dest.ko",
+    "net/6lowpan/nhc_fragment.ko",
+    "net/6lowpan/nhc_hop.ko",
+    "net/6lowpan/nhc_ipv6.ko",
+    "net/6lowpan/nhc_mobility.ko",
+    "net/6lowpan/nhc_routing.ko",
+    "net/6lowpan/nhc_udp.ko",
+    "net/8021q/8021q.ko",
+    "net/can/can.ko",
+    "net/can/can-bcm.ko",
+    "net/can/can-gw.ko",
+    "net/can/can-raw.ko",
+    "net/ieee802154/6lowpan/ieee802154_6lowpan.ko",
+    "net/nfc/nfc.ko",
+    "net/rfkill/rfkill.ko",
+]
