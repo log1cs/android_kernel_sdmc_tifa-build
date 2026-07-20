@@ -117,6 +117,20 @@ MODULES_OUT_REMOVE = [
     "common_drivers/drivers/gpio/amlogic-pinctrl-soc-s7d.ko",
 ]
 
+SYSTEM_DLKM_MODULES = [
+    "mm/zsmalloc.ko",
+    "drivers/block/zram/zram.ko",
+    "drivers/net/mii.ko",
+    "drivers/net/usb/r8152.ko",
+    "drivers/net/usb/usbnet.ko",
+    "drivers/net/usb/asix.ko",
+    "drivers/net/usb/ax88179_178a.ko",
+    "drivers/net/usb/cdc_ether.ko",
+    "drivers/net/usb/cdc_ncm.ko",
+    "drivers/net/usb/r8153_ecm.ko",
+    "lib/crypto/libarc4.ko",
+]
+
 GKI_MODULES_REMOVE = [
     "drivers/net/can/dev/can-dev.ko",
     "drivers/net/can/slcan.ko",
