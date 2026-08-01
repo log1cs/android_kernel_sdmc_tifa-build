@@ -3,6 +3,7 @@
 load("//vendor/amlogic/kernel:kernel_platform.bzl", "amlogic_kernel_platform")
 load("//vendor/amlogic/gpu-modules/bifrost:defs.bzl", "mali_bifrost_module")
 load("//vendor/amlogic/media-modules:defs.bzl", "media_modules_module")
+load("//vendor/amlogic/realtek-drivers/8822cs:defs.bzl", "rtl8822cs_module")
 load(":modules.bzl", "COMMON_DRIVERS_MODULES", "GKI_MODULES_REMOVE", "OPPEN_MODULES", "MODULES_OUT_REMOVE", "SYSTEM_DLKM_MODULES")
 
 package(
@@ -12,6 +13,8 @@ package(
 mali_bifrost_module(name = "gpu_bifrost", kernel_build = ":oppen")
 
 media_modules_module(name = "media", kernel_build = ":oppen")
+
+rtl8822cs_module(name = "wlan_rtl8822cs", kernel_build = ":oppen")
 
 amlogic_kernel_platform(
     name = "oppen",
@@ -27,5 +30,6 @@ amlogic_kernel_platform(
     kernel_modules = [
         ":gpu_bifrost",
         ":media",
+        ":wlan_rtl8822cs",
     ],
 )
