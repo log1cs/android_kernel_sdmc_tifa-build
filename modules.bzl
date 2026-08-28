@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 
-OPPEN_MODULES = [
+TARGET_MODULES = [
     # keep sorted
     "arch/arm64/crypto/sha1-ce.ko",
     "drivers/clk/clk-scmi.ko",
