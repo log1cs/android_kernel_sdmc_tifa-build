@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 
+load("//build/kernel/kleaf:kernel.bzl", "kernel_build_config")
 load("//vendor/amlogic/kernel:kernel_platform.bzl", "amlogic_kernel_platform")
 load("//vendor/amlogic/gpu-modules/bifrost:defs.bzl", "mali_bifrost_module")
 load("//vendor/amlogic/media-modules:defs.bzl", "media_modules_module")
@@ -25,11 +26,21 @@ amlogic_kernel_platform(
     module_outs = [m for m in TARGET_MODULES + COMMON_DRIVERS_MODULES + SYSTEM_DLKM_MODULES if m not in MODULES_OUT_REMOVE],
     gki_modules_remove = GKI_MODULES_REMOVE + SYSTEM_DLKM_MODULES,
     system_dlkm_modules_load = ["kernel/" + m for m in SYSTEM_DLKM_MODULES] + [""],
-    build_config = "//vendor/amlogic/kernel:build.config.oppen.bazel",
+    build_config = ":oppen_build_config",
     kmi_symbol_list = "//vendor/amlogic/kernel:android/abi_gki_aarch64_amlogic",
     kernel_modules = [
         ":gpu_bifrost",
         ":media",
         ":wlan_rtl8822cs",
+    ],
+)
+
+kernel_build_config(
+    name = "oppen_build_config",
+    srcs = [
+        # do not sort
+        "//vendor/amlogic/kernel:set_kernel_dir_build_config",
+        "//vendor/amlogic/kernel:build.config.gki.aarch64",
+        "build.config.oppen",
     ],
 )
