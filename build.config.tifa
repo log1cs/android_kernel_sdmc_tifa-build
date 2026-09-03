@@ -1,6 +1,6 @@
 export COMMON_DRIVERS_DIR=common_drivers
 
-# Mali Bifrost GPU driver version (oppen = dvalin/G52). Override Makefile default r25p0.
+# Mali Bifrost GPU driver version (tifa = dvalin/G52). Override Makefile default r25p0.
 export GPU_DRV_VERSION=r47p0
 export GPU_TYPE=dvalin
 export GPU_ARCH=bifrost
@@ -21,7 +21,7 @@ function pre_defconfig_cmds() {
 			${ROOT_DIR}/${KERNEL_DIR}/../common_drivers/arch/arm64/configs/amlogic_gki.10 \
 			${ROOT_DIR}/${KERNEL_DIR}/../common_drivers/arch/arm64/configs/amlogic_gki.debug \
 			${ROOT_DIR}/${KERNEL_DIR}/../common_drivers/arch/arm64/configs/amlogic_upgrade_u.defconfig \
-			${ROOT_DIR}/${KERNEL_DIR}/../common_drivers/arch/arm64/configs/oppen_defconfig \
+			${ROOT_DIR}/${KERNEL_DIR}/../common_drivers/arch/arm64/configs/sdmc_oppen_defconfig \
 			${temp_file}
 
 	rm ${temp_file}
